@@ -1,10 +1,13 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Create() {
    const [name,setName] = useState('');
    const [age,setAge] = useState('');
    const [email,setEmail] = useState('');
+
+   const navigate = useNavigate();
 
    const submitHandler = (e) =>{
     e.preventDefault();
@@ -12,6 +15,8 @@ function Create() {
         e_name: name,
         e_age: age,
         e_email: email
+    }).then(()=>{
+      navigate('/')
     })
    }
    
