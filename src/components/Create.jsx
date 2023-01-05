@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 
 function Create() {
    const [name,setName] = useState('');
@@ -45,6 +45,13 @@ function Create() {
             <input type='submit' value='Submit' className='btn btn-primary'/>
             </div>
          </form>
+         <div className='mt-2 mb-2'>
+         <Link to='/'>
+          <button className='btn btn-primary'>
+            Read Data
+          </button>
+         </Link>
+        </div>
         </div>
       </div>
     </>

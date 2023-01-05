@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Read() {
      const[apiData,setApiData] = useState([]);
@@ -15,8 +16,8 @@ function Read() {
     },[])
   return (
     <div className='row'>
-      <div className='col-md-12'>
-        <table className='table table-bordered table-striped table-dark table-hover'>
+      <div className='col-md-12 mt-2'>
+        <table className='table table-bordered table-striped table-hover'>
             <thead>
                 <tr>
                     <th>ID</th>
@@ -37,8 +38,16 @@ function Read() {
                     <td>{item.e_name}</td>
                     <td>{item.e_age}</td>
                     <td>{item.e_email}</td>
-                    <td>EDIT</td>
-                    <td>DELETE</td>
+                    <td>
+                    <button className='btn btn-primary'>
+                     EDIT
+                    </button>
+                    </td>
+                    <td>
+                    <button className='btn btn-danger'>
+                     DELETE
+                    </button>
+                    </td> 
                 </tr>
                 </>
             )
@@ -46,9 +55,19 @@ function Read() {
            }
             </tbody>
         </table>
+        <div className='mt-2 mb-2'>
+         <Link to='/create'>
+          <button className='btn btn-primary'>
+            Create Data
+          </button>
+         </Link>
+        </div>
       </div>
     </div>
   )
 }
 
 export default Read;
+
+
+
