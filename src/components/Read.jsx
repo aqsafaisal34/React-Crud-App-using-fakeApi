@@ -49,7 +49,9 @@ function Read() {
                     </button>
                     </td>
                     <td>
-                    <button className='btn btn-danger' onClick={()=>handleDelete(item.id)}>
+                    <button className='btn btn-danger' onClick={()=>{if(window.confirm('Are you sure to delete?'))
+                    {handleDelete(item.id)}
+                    }}>
                      DELETE
                     </button>
                     </td> 
