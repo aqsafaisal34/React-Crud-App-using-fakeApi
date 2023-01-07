@@ -3,14 +3,19 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function Read() {
-     const[apiData,setApiData] = useState([]);
+    const[apiData,setApiData] = useState([]);
     const getData = () =>{
         axios.get('https://63b5680958084a7af3933503.mockapi.io/crud')
         .then((response)=>{
            setApiData(response.data)
         })
     }
-
+    const handleDelete = (id) => {
+       axios.delete(`https://63b5680958084a7af3933503.mockapi.io/crud/${id}`)
+       .then(()=>{
+        getData();
+       })
+    }
     useEffect(()=>{
         getData();
     },[])
@@ -44,7 +49,7 @@ function Read() {
                     </button>
                     </td>
                     <td>
-                    <button className='btn btn-danger'>
+                    <button className='btn btn-danger' onClick={()=>handleDelete(item.id)}>
                      DELETE
                     </button>
                     </td> 
