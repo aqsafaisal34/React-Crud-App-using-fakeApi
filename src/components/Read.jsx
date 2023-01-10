@@ -8,13 +8,24 @@ function Read() {
         axios.get('https://63b5680958084a7af3933503.mockapi.io/crud')
         .then((response)=>{
            setApiData(response.data)
-        })
+        }).catch((err)=>{
+          console.log(err)
+       })
     }
     const handleDelete = (id) => {
        axios.delete(`https://63b5680958084a7af3933503.mockapi.io/crud/${id}`)
        .then(()=>{
         getData();
-       })
+       }).catch((err)=>{
+        console.log(err)
+     })
+    }
+    const setDataToStorage = (id, name, age, email) =>{
+       localStorage.setItem('id',id);
+       localStorage.setItem('name',name);
+       localStorage.setItem('age',age);
+       localStorage.setItem('email',email);
+
     }
     useEffect(()=>{
         getData();
@@ -44,9 +55,11 @@ function Read() {
                     <td>{item.e_age}</td>
                     <td>{item.e_email}</td>
                     <td>
-                    <button className='btn btn-primary'>
+                    <Link to='/edit'>
+                    <button className='btn btn-primary' onClick={()=>setDataToStorage(item.id, item.e_name, item.e_age, item.e_email)}>
                      EDIT
                     </button>
+                    </Link>
                     </td>
                     <td>
                     <button className='btn btn-danger' onClick={()=>{if(window.confirm('Are you sure to delete?'))

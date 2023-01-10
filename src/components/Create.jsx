@@ -17,7 +17,9 @@ function Create() {
         e_email: email
     }).then(()=>{
       navigate('/')
-    })
+    }).catch((err)=>{
+      console.log(err)
+   })
    }
    
   return (
